@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -24,7 +25,8 @@ class PostFactory extends Factory
             // 'slug' => Str::slug(fake()->sentence()) . '-' . Str::random(5), --- IGNORE ---
            //merubah sentence menjadi slug dengan tambahan random string agar tidak terjadi duplikat slug 
             'author_id' => User::factory(),
-            'body' => fake()->paragraphs(3, true)
+            'category_id' => Category::factory(),
+            'body' => fake()->paragraphs(3, true),
         ];
     }
 }

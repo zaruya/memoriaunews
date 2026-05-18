@@ -20,8 +20,10 @@ return new class extends Migration
                 table:'users',
                 indexName:'posts_author_id'
             );
-            // $table->unsignedBigInteger('author_id');
-            // $table->foreign('author_id')->references('id')->on('users');  
+            $table->foreignId('category_id')->Constrained(
+                table:'categories',
+                indexName:'posts_category_id'                
+            );
             $table->text('body');
             $table->timestamps();
         });
