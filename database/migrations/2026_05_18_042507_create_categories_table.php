@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('color');
             $table->timestamps();
         });
         //pada saat migrate terjadi error, karena urutan kategori harus di proses sebelum post, karena post membutuhkan category_id sebagai foreign key, sehingga kita harus membuat migration kategori terlebih dahulu sebelum post, dengan cara merename migration kategori menjadi tanggal yang lebih awal dari post, agar saat migrate tidak terjadi error
