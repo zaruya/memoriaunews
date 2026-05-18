@@ -1,37 +1,18 @@
-<?php   
+<?php
 
 namespace App\Models;
 
-use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Post
+class Post extends Model
 {
-    public static function all(){
-        return [  
-    [
-        'id' => 1,
-        'slug' => 'judul-post-pertama',
-    'title'=>'Artikel 1',
-    'author'=>'Rahmat Mulia',
-    'body'=>'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis quibusdam voluptates maxime sequi non dolorem, impedit unde ad recusandae id, aliquam dolor ab at tempora officiis omnis nemo? A, vero'
-    ],
-    [
-        'id' => 2,
-        'slug' => 'judul-post-kedua',
-        'title'=>'Artikel 2',
-    'author'=>'Rahmat Mulia',
-    'body'=>'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione omnis sunt adipisci minima asperiores exercitationem quia molestiae reprehenderit. Inventore mollitia nulla minima, hic sint dolorem in recusandae repellendus molestias reiciendis.'
-    ]
-    ];
-    }
-    public static function find($slug):array
-    {
-      
+    //
+    use HasFactory;
+     protected $fillable = ['title', 'slug', 'author', 'body'];
 
-        $post= Arr::first(static::all(), fn ($post)=> $post ['slug'] == $slug);   
-        if(! $post){
-            abort(404);
-        }
-    return $post;
-    }
-    }
+     public function author()
+     {
+        return $this->belongsTo(User::class, 'author_id');
+     }
+}

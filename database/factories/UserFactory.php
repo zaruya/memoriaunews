@@ -28,6 +28,9 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            //ternary operator $a=$a??= $b; sama dengan $a=$a ?? $b; artinya jika $a sudah ada maka tetap $a, jika belum ada maka $a=$b
+            // ??= adalah operator penugasan null coalescing, yang menetapkan nilai ke variabel hanya jika variabel tersebut belum ditetapkan atau bernilai null.
+            //$a=$a?:$b; adalah operator penugasan ternary, yang menetapkan nilai ke variabel berdasarkan kondisi. Jika $a bernilai true (tidak null, tidak false, tidak 0, dll), maka $a tetap $a. Jika $a bernilai false, maka $a akan diubah menjadi $b.
             'remember_token' => Str::random(10),
         ];
     }
@@ -41,4 +44,5 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+    
 }
