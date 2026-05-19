@@ -9,9 +9,9 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   
   </head>
-  <body class="h-full"> 
+  <body class="h-full bg-gray-200"> 
 
-<div class="min-h-full">
+<div class="min-h-full class="light"">
   <!-- Inisialisasi state: openMobile untuk menu hp, openProfile untuk dropdown profile -->
  <x-navbar></x-navbar>
 
